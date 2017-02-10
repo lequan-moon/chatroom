@@ -211,7 +211,7 @@ $(function(){
 		textarea.val("");
 	});
 
-	message.on('change', function(e){
+	textarea.on('change', function(e){
 		io.emit('imtyping', {user: name});
 	})
 
