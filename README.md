@@ -1,7 +1,8 @@
 # chatroom
 
-Prepare server
-Nodejs
+Prepare server  
+Nodejs  
+nodemon
 
 Run below code first to install all dependency from package.json
 ```
