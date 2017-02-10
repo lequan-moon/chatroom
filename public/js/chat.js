@@ -212,7 +212,7 @@ $(function(){
 	});
 
 	textarea.on('change', function(e){
-		io.emit('imtyping', {user: name});
+		socket.emit('imtyping', {user: name});
 	})
 
 	// Update the relative time stamps on the chat messages every minute
