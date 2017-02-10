@@ -133,6 +133,11 @@ module.exports = function(app,io){
 			// When the server receives a message, it sends it to the other person in the room.
 			socket.broadcast.to(socket.room).emit('receive', {msg: data.msg, user: data.user, img: data.img});
 		});
+
+		// Handle the typing event, which show who is typing
+		socket.on('imtyping', function(data){
+			socket.broadcast.to(socket.room).emit('hetyping', {user: data.user});
+		});
 	});
 };
 

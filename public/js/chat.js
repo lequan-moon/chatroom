@@ -36,7 +36,8 @@ $(function(){
 		chatForm = $("#chatform"),
 		textarea = $("#message"),
 		messageTimeSent = $(".timesent"),
-		chats = $(".chats");
+		chats = $(".chats"),
+		whostyping = $("#whostyping");
 
 	// these variables hold images
 	var ownerImage = $("#ownerImage"),
@@ -175,6 +176,10 @@ $(function(){
 		}
 	});
 
+	socket.on('hetyping', function(data){
+		whostyping.text(data.user + " is typing...");
+	});
+
 	textarea.keypress(function(e){
 
 		// Submit the form on enter
@@ -205,6 +210,10 @@ $(function(){
 		// Empty the textarea
 		textarea.val("");
 	});
+
+	message.on('change', function(e){
+		io.emit('imtyping', {user: name});
+	})
 
 	// Update the relative time stamps on the chat messages every minute
 
